@@ -31,6 +31,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
+  gem 'rspec-rails', '~> 3.7'
+  # Capybara & FactoryBot are likely overkill for a lone HTML page, but making this
+  # representative of something bigger
+  gem 'factory_bot', '~> 4.1'
+  gem 'capybara', '~> 3.2'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
