@@ -1,8 +1,4 @@
-class Api::V1::StatusUpdateController < ApplicationController
-  # Not calling from browser, so CSRF protection not useful
-  # Real world would have actual authentication/authorization logic to prevent unfettered use
-  skip_forgery_protection
-
+class Api::V1::StatusUpdateController < Api::V1::ApiController
   def create
 
     creator = CreatesStatusUpdate.new(
