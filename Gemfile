@@ -30,6 +30,9 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# Result Monad abstraction
+gem 'resonad', '~> 1.2'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.7'
   # Capybara & FactoryBot are likely overkill for a lone HTML page, but making this
