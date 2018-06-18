@@ -1,5 +1,9 @@
 # Litmus Status Demo App
 
+![Status Screenshot](https://www.dropbox.com/s/ryh414fd3ax19zc/litmus-status.png?dl=1)
+
+It's not a whole lot to look at, but that's what's there.
+
 ## Tech
 
 Using Rails 5.2, Ruby 2.5.1, PostgreSQL. Testing via RSpec, Capybara, FactoryGirl. Templates with Slim, CSS with Sass. Javascript with nothing added-- no need for big front-end libraries here.
