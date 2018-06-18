@@ -1,0 +1,10 @@
+section#current-status
+  h1 Litmus Status
+  h3 Litmus is currently #{status_tag(@current_status)}
+section#update-history
+  h3 Recent Status Messages
+  - if @message_history.empty?
+    p No updates yet!
+  - else
+    ul
+      = render @message_history

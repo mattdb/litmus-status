@@ -33,11 +33,15 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Result Monad abstraction
 gem 'resonad', '~> 1.2'
 
+gem 'slim-rails'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.7'
   # Capybara & FactoryBot are likely overkill for a lone HTML page, but making this
   # representative of something bigger
-  gem 'factory_bot', '~> 4.1'
+  gem 'factory_bot_rails', '~> 4.10'
+  # because clearly, IT Crowd quotes are worth pulling from master
+  gem 'faker', git: 'https://github.com/stympy/faker.git'
   gem 'capybara', '~> 3.2'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
