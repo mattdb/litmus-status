@@ -31,6 +31,15 @@ Even with storing multiple status updates, I still could have used multiple mode
 
 Lastly, the status and the message feel like part of the same conceptual entity, or "Noun", to me. This is certainly debatable, but worth mentioning that consideration.
 
+### Workflow (Service) Object
+
+I prefer to pull nearly all logic out of the controller, so the `CreatesStatusUpdate` object was born. This boils the whole process down to "Did this succeed or not?" and the associated data (either a new StatusUpdate record, or the error message describing problems encountered, depending on the success state).
+
+`CreatesStatusUpdate` also provided an interesting case, that ended up with me going with a Result Monad construct: parsing the string parameter provided to the API for a new status. Because we are storing status as a boolean column, there are 3 possible states in a database row: `true`, `false`, or `nil`. Parsing the API parameter also has an additional possible state: Invalid. If we returned `nil` when an invalid state was provided, we would lose the opportunity to provide feedback that the state parameter provided was invalid (it would be as though the parameter was not supplied at all, potentially leading to confusing situations like returning an error message of "Must supply either a status or a message" when a status had in fact been supplied, it was just invalid).
+
+This could have potentially been handled by returning a hash or array or other container, but using a Result object also allowed other niceties such as a clean way to chain more potential failure-producing behavior. The create method could have also returned a Result, but the Controller doesn't have chained behavior, so the benefits there are smaller for the time being, at least.
+
+
 ### Security / CSRF / Auth
 
 The API Controller had CSRF protection removed, since we will be calling from the command-line. Typically this would be replaced with actual Authentication/Authorization controls, but this is out of spec.
